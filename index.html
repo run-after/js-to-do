@@ -10,17 +10,27 @@
   <body>
     <header>
       <h1 class="title">TO-DO</h1>
-      <button class="add-project-btn btn">Add Project</button>
     </header>
-    <div class="container">
-      
-      <div class="project">
-        <div id="general">
-
+    <main>
+      <div class="project-tabs">
+        <div class="tab selected" id="one">
+          <div class="delete">X</div>
+        </div>
+        <div class="last-tab tab">
+          <button class="add-project-btn">+</button>
         </div>
       </div>
+      <div class="container">
 
-    </div>
+        <div class="project">
+          <div class="name">title</div>
+          <div class="dueDate">duedate</div>
+          <div class="priority">priority</div>
+          <div class="description">description</div>
+        </div>
+
+      </div>
+    </main>
     <script src="main.js"></script>
   </body>
 </html>

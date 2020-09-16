@@ -50,10 +50,15 @@ body {
   opacity: 0.5;
   display: grid;
   align-content: center;
+  grid-auto-flow: column;
 }
  
 .tab:hover {
   opacity: 0.7;
+}
+
+.tab input {
+  width: 100px;
 }
 
 .delete {
@@ -98,7 +103,7 @@ body {
   opacity: 0.8;
 }
 
-.container {
+.project {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
@@ -106,7 +111,7 @@ body {
   width: 75%;
 }
 
-.project {
+.task {
   margin-top: 10px;
   height: 200px;/*probably change*/
   width: 100%;
@@ -116,9 +121,28 @@ body {
   grid-auto-flow: row;
 }
 
-.project > * {
+.task > * {
   border-bottom: 1px solid black;
   display: grid;
   justify-content: center;
   align-items: center;
+}
+
+.add-task-btn {
+  align-self: center;
+  width: 100px;
+  height: 75px;
+  background: grey;
+  opacity: 0.5;
+  border-radius: 25%;
+  justify-self: center;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  font-size: 3em;
+}
+
+.add-task-btn:hover {
+  opacity: 0.8;
 }

@@ -13,20 +13,31 @@
     </header>
     <main>
       <div class="project-tabs">
-        <div class="tab selected" id="one">
-          <div class="delete">X</div>
+        <div class="tab selected" data-index="0">
+          General
+          <button class="delete">X</button>
         </div>
+        <!-- last tab to add more tabs -->
         <div class="last-tab tab">
           <button class="add-project-btn">+</button>
         </div>
+        <!--                            -->
       </div>
       <div class="container">
-
+        
         <div class="project">
-          <div class="name">title</div>
-          <div class="dueDate">duedate</div>
-          <div class="priority">priority</div>
-          <div class="description">description</div>
+
+          <div class="task">
+            <div class="name">title</div>
+            <div class="dueDate">duedate</div>
+            <div class="priority">priority</div>
+            <div class="description">description</div>
+          </div>
+
+          <div class="task last-task">
+            <button class="add-task-btn">+</button>
+          </div>
+
         </div>
 
       </div>

@@ -16,6 +16,7 @@ const projectView = (index) => {
   const listTasks = (item) => {
     addTask.addTask.listExistingTasks(item);
   }
+  
   if(tasks.length > 0) {
     tasks.forEach(listTasks);
   }

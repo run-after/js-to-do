@@ -35,6 +35,7 @@ const addTask = (() => {
       dateInput.id = "dueDate";
       dateInput.placeholder = "dueDate";
 
+      // This will probably need to be radios
       const priorityInput = document.createElement("input");
       priorityInput.type = "text";
       priorityInput.name = "priority";
@@ -105,49 +106,12 @@ const addTask = (() => {
 
     const currentTab = document.querySelector(".selected");
     let index = currentTab.getAttribute("data-index");
-        // need to create form first
-
-    // This adds a task to the project
+    // Adds a task to the project
     projects.projects[index].tasks.push(taskFactory.taskFactory(name, dueDate, priority, description));
   }
 
-
-
   return {addListener, listExistingTasks}
+
 })();
 
 export default {addTask}
-
-
-/* FORM HTML
-
-    <div id="modal">
-      <div class="modal-content">
-        <form name="addBook" action="" method="get">
-          <label for="title">Title:</label>
-          <input type="text" id="title" name="title">
-          <br>
-          <label for="author">Author:</label>
-          <input type="text" id="author" name="author">
-          <br>
-          <label for="pages">pages:</label>
-          <input type="text" id="pages" name="pages">
-          <br>
-          <label for="read">Read?</label>
-          <div class="radios">
-            <input type="radio" name="read" value="true">Yes
-            <input type="radio" name="read" value="false" checked="checked">No
-          </div>
-          <br>
-          <button id="add-book-btn" type="button">Add Book</button>
-
-        </form>
-
-
-        *** JS ***
-
-        // Pops up form
-newBtn.onclick = function () {
-  modal.style.display = "block";
-}
-*/

@@ -1,7 +1,6 @@
 import projects from "./projects.js";
 import projectFactory from "./projectFactory.js";
 import taskFactory from './taskFactory.js';
-// was able to add task to project
 import projectView from "./projectView";
 import addTask from "./addTask.js";
 
@@ -18,8 +17,7 @@ const addProject = (() => {
       const newTab = document.createElement("div");
       newTab.classList.add("tab");
 
-      // Remove all other .selected tabs when generated (NOW WOULD BE A GOOD
-      // TIME TO SWITCH VIEW)
+      // Remove all other .selected tabs when generated
       const selectedElement = document.querySelector(".selected");
       selectedElement.classList.remove("selected");
       // And make the new tab .selected
@@ -30,6 +28,10 @@ const addProject = (() => {
       newTab.setAttribute("data-index", index);
       const projectName = prompt("New project name?");
       newTab.textContent = projectName;
+      const deleteBtn = document.createElement("button");
+      deleteBtn.classList.add("delete");
+      deleteBtn.textContent = "X";
+      newTab.appendChild(deleteBtn);
       // Insert tab into DOM
       projectTabs.insertBefore(newTab, lastTab);
       createProject(projectName);
@@ -50,21 +52,16 @@ const addProject = (() => {
 
       })
 
-
     });
 
   })();
 
   const createProject = (name) => {
     let project = projectFactory.projectFactory(name);
-      
     projects.projects.push(project);
-
   }
 
-  
-
-  return {addListener}
+  return {addListener, createProject}
 })();
 
 export default {addProject}

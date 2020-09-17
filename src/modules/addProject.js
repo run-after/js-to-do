@@ -3,6 +3,7 @@ import projectFactory from "./projectFactory.js";
 import taskFactory from './taskFactory.js';
 import projectView from "./projectView";
 import addTask from "./addTask.js";
+import removeProject from "./removeProject.js";
 
 const addProject = (() => {
 
@@ -39,19 +40,31 @@ const addProject = (() => {
       projectView.projectView(index)
 
       // retrieve data-index and make current tab selected
+      
       newTab.addEventListener("click", (e) => {
-        let index = e.target.dataset.index;
+        // Sloppy - when clicking delete button, it would add selected to
+        // the delete button without if statement
+        // Maybe a click button on delete button will fix this
+        if(e.target.classList.contains("tab")){
+        
+          let index = e.target.dataset.index;
+          
+          // Remove all other .selected tabs
+          const selectedElement = document.querySelector(".selected");
+          selectedElement.classList.remove("selected");
+          // And make the new tab .selected
+          e.target.classList.add("selected");
 
-        // Remove all other .selected tabs
-        const selectedElement = document.querySelector(".selected");
-        selectedElement.classList.remove("selected");
-        // And make the new tab .selected
-        e.target.classList.add("selected");
-
-        projectView.projectView(index);
-
+          projectView.projectView(index);
+        
+        };
+      });
+      // Add listener to delete project when delete button is pressed
+      deleteBtn.addEventListener("click", (e) => {
+        let index = e.target.parentElement.getAttribute("data-index");
+        removeProject.removeProject(index);
       })
-
+      
     });
 
   })();
@@ -59,7 +72,7 @@ const addProject = (() => {
   const createProject = (name) => {
     let project = projectFactory.projectFactory(name);
     projects.projects.push(project);
-  }
+  };
 
   return {addListener, createProject}
 })();

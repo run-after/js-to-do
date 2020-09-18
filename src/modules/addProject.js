@@ -11,7 +11,7 @@ const addProject = (() => {
   const addListener = (() => {
     const btn = document.querySelector(".add-project-btn");
     const lastTab = document.querySelector(".last-tab");
-
+    // Add project listener
     btn.addEventListener("click", () => {
       // 
       const projectTabs = document.querySelector(".project-tabs");

@@ -31,6 +31,7 @@ const projectView = (index) => {
   button.classList.add("add-task-btn");
   button.textContent = "+";
   lastTask.appendChild(button);
+  
   addTask.addTask.addListener();
 };
 

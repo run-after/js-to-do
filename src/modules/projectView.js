@@ -11,6 +11,7 @@ const projectView = (index) => {
   project.classList.add("project");
 
   container.appendChild(project);
+  
 
   // Calls to create task box with existing tasks
   const listTasks = (item) => {
@@ -20,7 +21,7 @@ const projectView = (index) => {
   if(tasks.length > 0) {
     tasks.forEach(listTasks);
   }
- 
+
   // This creates the add task btn. (own function?)
   const lastTask = document.createElement("div");
   lastTask.classList.add("task");
@@ -31,7 +32,6 @@ const projectView = (index) => {
   button.textContent = "+";
   lastTask.appendChild(button);
   addTask.addTask.addListener();
-
 };
 
 export default {projectView}

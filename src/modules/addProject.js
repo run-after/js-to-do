@@ -37,7 +37,7 @@ const addProject = (() => {
       projectTabs.insertBefore(newTab, lastTab);
       createProject(projectName);
       // View current project on main page
-      projectView.projectView(index)
+      projectView.projectView(index);
 
       // retrieve data-index and make current tab selected
       
@@ -63,7 +63,7 @@ const addProject = (() => {
       deleteBtn.addEventListener("click", (e) => {
         let index = e.target.parentElement.getAttribute("data-index");
         removeProject.removeProject(index);
-      })
+      });
       
     });
 

@@ -6,6 +6,7 @@ const addTask = (() => {
   
   //add listener to add-task-btn
   const addListener = () => {
+  
     const btn = document.querySelector(".add-task-btn");
     const lastTask = document.querySelector(".last-task");
 
@@ -103,7 +104,6 @@ const addTask = (() => {
   }
 
   const createNew = (name, dueDate, priority, description) => {
-
     const currentTab = document.querySelector(".selected");
     let index = currentTab.getAttribute("data-index");
     // Adds a task to the project

@@ -1,9 +1,9 @@
 import projects from "./projects.js";
 import projectView from "./projectView.js";
 import removeProject from "./removeProject.js";
-import addProject from "./addProject.js";
 import projectFactory from "./projectFactory.js"
 
+// Hopefull can get this sorted into a few functions
 const initialView = (() => {
 
   const createProject = (name) => {

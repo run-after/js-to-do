@@ -37,12 +37,38 @@ const addTask = (() => {
       dateInput.id = "dueDate";
       dateInput.placeholder = "Date due";
 
-      // This will probably need to be radios
-      const priorityInput = document.createElement("input");
-      priorityInput.type = "text";
-      priorityInput.name = "priority";
-      priorityInput.id = "priority";
-      priorityInput.placeholder = "priority";
+      const radioContainer = document.createElement("div");
+      radioContainer.classList.add("priority");
+      
+      const lowPriorityInput = document.createElement("input");
+      lowPriorityInput.type = "radio";
+      lowPriorityInput.name = "priority";
+      lowPriorityInput.id = "low";
+      lowPriorityInput.value = "Low";
+
+      const lowPriorityLabel = document.createElement("label");
+      lowPriorityLabel.setAttribute("for", "priority");
+      lowPriorityLabel.textContent = "Low";
+
+      const medPriorityInput = document.createElement("input");
+      medPriorityInput.type = "radio";
+      medPriorityInput.name = "priority";
+      medPriorityInput.id = "med";
+      medPriorityInput.value = "Med";
+
+      const medPriorityLabel = document.createElement("label");
+      medPriorityLabel.setAttribute("for", "priority");
+      medPriorityLabel.textContent = "Med";
+
+      const highPriorityInput = document.createElement("input");
+      highPriorityInput.type = "radio";
+      highPriorityInput.name = "priority";
+      highPriorityInput.id = "high";
+      highPriorityInput.value = "High";
+
+      const highPriorityLabel = document.createElement("label");
+      highPriorityLabel.setAttribute("for", "priority");
+      highPriorityLabel.textContent = "High";
 
       const descInput = document.createElement("input");
       descInput.type = "text";
@@ -58,15 +84,28 @@ const addTask = (() => {
       newTask.appendChild(form);
       form.appendChild(nameInput);
       form.appendChild(dateInput);
-      form.appendChild(priorityInput);
+      radioContainer.appendChild(lowPriorityLabel);
+      radioContainer.appendChild(lowPriorityInput);
+      radioContainer.appendChild(medPriorityLabel);
+      radioContainer.appendChild(medPriorityInput);
+      radioContainer.appendChild(highPriorityLabel);
+      radioContainer.appendChild(highPriorityInput);
+      form.appendChild(radioContainer);
       form.appendChild(descInput);
       form.appendChild(submit);
 
       submit.addEventListener("click", () => {
-        let name = document.getElementById("name").value;
+        const name = document.getElementById("name").value;
         let date = document.getElementById("dueDate").value;
         date = format(Date.parse(date), "PPPP");
-        let priority = document.getElementById("priority").value;
+        // Sets priority to level selected
+        let priority = document.querySelectorAll("input[name='priority']");
+        console.log(priority)
+        for (const level of priority){
+          if (level.checked) {
+            priority = level.value;
+          }
+        }
         let description = document.getElementById("description").value;
         // Do not allow blank name, date, or description
         if(name && date && description){

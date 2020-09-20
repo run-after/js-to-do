@@ -16,11 +16,12 @@ import initialView from "./modules/initialView.js";
 
   Add ability to edit tasks
 
-  Make priority radio buttons on task
-
   Style and label the inputs on task
 
-  Make date a dropdown instead of text field on task
+  The description could be long. If so, it makes that
+  task box large and shrings the others. Maybe hide the 
+  description unless clicked on, then expand it with a 
+  close button that would shrink it again
 
   Add local storage
 

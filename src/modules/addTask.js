@@ -39,7 +39,10 @@ const addTask = (() => {
 
       const radioContainer = document.createElement("div");
       radioContainer.classList.add("priority");
-      
+      radioContainer.textContent = "Priority:"
+      const br = document.createElement("br");
+      radioContainer.appendChild(br);
+
       const lowPriorityInput = document.createElement("input");
       lowPriorityInput.type = "radio";
       lowPriorityInput.name = "priority";
@@ -54,7 +57,7 @@ const addTask = (() => {
       medPriorityInput.type = "radio";
       medPriorityInput.name = "priority";
       medPriorityInput.id = "med";
-      medPriorityInput.value = "Med";
+      medPriorityInput.value = "Medium";
 
       const medPriorityLabel = document.createElement("label");
       medPriorityLabel.setAttribute("for", "priority");
@@ -133,15 +136,22 @@ const addTask = (() => {
     task.appendChild(name);
     const dueDate = document.createElement("div");
     dueDate.classList.add("dueDate");
-    dueDate.textContent = item.dueDate;
+    dueDate.textContent = `Due on: ${item.dueDate}`;
     task.appendChild(dueDate);
     const priority = document.createElement("div");
     priority.classList.add("priority");
-    priority.textContent = item.priority;
+    priority.textContent = `Priority: ${item.priority}`;
+    if(item.priority == 'Low'){
+      task.style.background = "rgb(127, 191, 63)";
+    }else if(item.priority == "Medium"){
+      task.style.background = "rgb(255, 252, 117)";
+    }else {
+      task.style.background = "rgb(255, 112, 114)";
+    }
     task.appendChild(priority);
     const description = document.createElement("div");
     description.classList.add("description");
-    description.textContent = item.description;
+    description.textContent = `Description: ${item.description}`;
     task.appendChild(description);
     
     project.appendChild(task);

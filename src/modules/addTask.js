@@ -68,10 +68,13 @@ const addTask = (() => {
         date = format(Date.parse(date), "PPPP");
         let priority = document.getElementById("priority").value;
         let description = document.getElementById("description").value;
-        createNew(name, date, priority, description)
-        const currentTab = document.querySelector(".selected");
-        let index = currentTab.getAttribute("data-index");
-        projectView.projectView(index);
+        // Do not allow blank name, date, or description
+        if(name && date && description){
+          createNew(name, date, priority, description)
+          const currentTab = document.querySelector(".selected");
+          let index = currentTab.getAttribute("data-index");
+          projectView.projectView(index);
+        }
       });
       // ^^ Creates a form, adds to DOM, calls createNew for info entered ^^
 

@@ -1,6 +1,7 @@
 import projects from "./projects.js";
 import projectView from "./projectView.js";
 import taskFactory from "./taskFactory.js"
+import {format} from "date-fns";
 
 const addTask = (() => {
   
@@ -34,7 +35,7 @@ const addTask = (() => {
       dateInput.type = "date";
       dateInput.name = "dueDate";
       dateInput.id = "dueDate";
-      dateInput.placeholder = "dueDate";
+      dateInput.placeholder = "Date due";
 
       // This will probably need to be radios
       const priorityInput = document.createElement("input");
@@ -64,6 +65,7 @@ const addTask = (() => {
       submit.addEventListener("click", () => {
         let name = document.getElementById("name").value;
         let date = document.getElementById("dueDate").value;
+        date = format(Date.parse(date), "PPPP");
         let priority = document.getElementById("priority").value;
         let description = document.getElementById("description").value;
         createNew(name, date, priority, description)

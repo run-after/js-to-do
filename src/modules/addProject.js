@@ -23,6 +23,7 @@ const addProject = (() => {
     newTab.setAttribute("data-index", index);
     const projectName = prompt("New project name?");
     newTab.textContent = projectName;
+    
     // Create delete button on DOM
     const deleteBtn = document.createElement("button");
     deleteBtn.classList.add("delete");

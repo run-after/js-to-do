@@ -31,7 +31,7 @@ const addTask = (() => {
       nameInput.placeholder = "Name";
 
       const dateInput = document.createElement("input");
-      dateInput.type = "text";
+      dateInput.type = "date";
       dateInput.name = "dueDate";
       dateInput.id = "dueDate";
       dateInput.placeholder = "dueDate";

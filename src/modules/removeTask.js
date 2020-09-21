@@ -8,8 +8,6 @@ const removeTask = (projectIndex, taskIndex) => {
   selectedTask.remove();
   // Remove from project.tasks array
   selectedProject.tasks.splice(taskIndex, 1, null); // replace with null so index won't change on tasks
-  
-
 
 };
 

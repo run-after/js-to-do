@@ -1,5 +1,5 @@
 import projects from "./projects.js";
-import addTask from "./addTask.js";
+import addTaskToDOM from "./addTaskToDOM.js";
 
 const projectView = (projectID) => {
   const tasks = projects.projects[projectID].tasks;
@@ -16,7 +16,7 @@ const projectView = (projectID) => {
   // Calls to create task box with existing tasks
   const listTasks = (item, index) => {
     
-    addTask.addTask.listExistingTasks(item, index, projectID);
+    addTaskToDOM.addTaskToDOM.listExistingTasks(item, index, projectID);
   }
   
   if(tasks.length > 0) {
@@ -33,7 +33,7 @@ const projectView = (projectID) => {
   button.textContent = "+";
   lastTask.appendChild(button);
   
-  addTask.addTask.addListener();
+  addTaskToDOM.addTaskToDOM.addListener();
 };
 
 export default {projectView}

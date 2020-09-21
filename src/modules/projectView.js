@@ -1,8 +1,8 @@
 import projects from "./projects.js";
 import addTask from "./addTask.js";
 
-const projectView = (index) => {
-  const tasks = projects.projects[index].tasks;
+const projectView = (projectID) => {
+  const tasks = projects.projects[projectID].tasks;
 
   // clears container and makes new project div (own function?)
   const container = document.querySelector(".container");
@@ -14,9 +14,9 @@ const projectView = (index) => {
   
 
   // Calls to create task box with existing tasks
-  const listTasks = (item) => {
-    const projectID = index;
-    addTask.addTask.listExistingTasks(item, projectID);
+  const listTasks = (item, index) => {
+    
+    addTask.addTask.listExistingTasks(item, index, projectID);
   }
   
   if(tasks.length > 0) {

@@ -5,7 +5,7 @@ import projectView from "./projectView.js";
 const removeProject = (index) => {
   
   const selectedProject = document.querySelector(`[data-index="${index}"]`);
-  // Remove from DOM
+  // Remove from DOM (Maybe move to seperate module)
   selectedProject.remove();
   // Remove from projects list
   projects.projects.splice(index, 1, null); // replace with null so index won't change on projects

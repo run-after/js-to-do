@@ -46,6 +46,7 @@ const addTask = (() => {
 
       const lowPriorityInput = document.createElement("input");
       lowPriorityInput.type = "radio";
+      lowPriorityInput.checked = "checked";
       lowPriorityInput.name = "priority";
       lowPriorityInput.id = "low";
       lowPriorityInput.value = "Low";
@@ -98,6 +99,7 @@ const addTask = (() => {
       form.appendChild(descInput);
       form.appendChild(submit);
 
+      // Listener for submit button
       submit.addEventListener("click", () => {
         const name = document.getElementById("name").value;
         let date = document.getElementById("dueDate").value;
@@ -125,55 +127,59 @@ const addTask = (() => {
   };
 
   // Create task box on DOM from existing tasks in project
-  const listExistingTasks = (item, projectIndex) => {
-  
-    const taskIndex = projects.projects[projectIndex].tasks.length - 1; /////
-    const project = document.querySelector(".project");
-    const task = document.createElement("div");
-
-    const deleteButton = document.createElement("div");//////////
-    deleteButton.textContent = "X";///////////////////////////
-    deleteButton.classList = "delete";////////////////////////////
-    deleteButton.style.position = "absolute";//////////////////////
-
-    task.classList.add("task");
-    // Set task-index for delete button
-    task.setAttribute("data-task-index", taskIndex);///////////
-    // Set project-index to find parent
-    task.setAttribute("data-project-index", projectIndex);/////////////
-    const name = document.createElement("div");
-    name.classList.add("name");
-    name.textContent = item.name;
-
-    task.appendChild(deleteButton);////////////////////////////
-    task.appendChild(name);
-    const dueDate = document.createElement("div");
-    dueDate.classList.add("dueDate");
-    dueDate.textContent = `Due on: ${item.dueDate}`;
-    task.appendChild(dueDate);
-    const priority = document.createElement("div");
-    priority.classList.add("priority");
-    priority.textContent = `Priority: ${item.priority}`;
-    // Set background color depending on priority
-    if(item.priority == 'Low'){
-      task.style.background = "rgb(127, 191, 63)";
-    }else if(item.priority == "Medium"){
-      task.style.background = "rgb(255, 252, 117)";
-    }else {
-      task.style.background = "rgb(255, 112, 114)";
-    };
-    task.appendChild(priority);
-    const description = document.createElement("div");
-    description.classList.add("description");
-    description.textContent = `Description: ${item.description}`;
-    task.appendChild(description);
+  const listExistingTasks = (item, taskID, projectIndex) => {
     
-    project.appendChild(task);
+    if(item){ // Checks if item is null or not(deleted)
+      
+      const project = document.querySelector(".project");
+      const task = document.createElement("div");
 
-    // Listener for delete button
-    deleteButton.addEventListener("click", () => {
-      removeTask.removeTask(projectIndex, taskIndex);
-    })
+      const deleteButton = document.createElement("div");//////////
+      deleteButton.textContent = "X";///////////////////////////
+      deleteButton.classList = "delete";////////////////////////////
+      deleteButton.style.position = "absolute";//////////////////////
+
+      task.classList.add("task");
+      // Set task-index for delete button
+      task.setAttribute("data-task-index", taskID);///////////
+      // Set project-index to find parent
+      task.setAttribute("data-project-index", projectIndex);/////////////
+      const name = document.createElement("div");
+      name.classList.add("name");
+      name.textContent = item.name;
+
+      task.appendChild(deleteButton);////////////////////////////
+      task.appendChild(name);
+      const dueDate = document.createElement("div");
+      dueDate.classList.add("dueDate");
+      dueDate.textContent = `Due on: ${item.dueDate}`;
+      task.appendChild(dueDate);
+      const priority = document.createElement("div");
+      priority.classList.add("priority");
+      priority.textContent = `Priority: ${item.priority}`;
+      // Set background color depending on priority
+      if(item.priority == 'Low'){
+        task.style.background = "rgb(127, 191, 63)";
+      }else if(item.priority == "Medium"){
+        task.style.background = "rgb(255, 252, 117)";
+      }else {
+        task.style.background = "rgb(255, 112, 114)";
+      };
+      task.appendChild(priority);
+      const description = document.createElement("div");
+      description.classList.add("description");
+      description.textContent = `Description: ${item.description}`;
+      task.appendChild(description);
+      
+      project.appendChild(task);
+
+      // Listener for delete button
+      deleteButton.addEventListener("click", (e) => {
+        
+        const index = e.target.parentElement.getAttribute("data-task-index");
+        removeTask.removeTask(projectIndex, index);
+      });
+    };
   };
 
   const createNew = (name, dueDate, priority, description) => {

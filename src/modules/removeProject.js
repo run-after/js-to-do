@@ -1,4 +1,4 @@
-import addProject from "./addProject.js";
+import addProjectToDOM from "./addProjectToDOM.js";
 import projects from "./projects.js";
 import projectView from "./projectView.js";
 
@@ -27,7 +27,7 @@ const removeProject = (index) => {
   if(data){
     projectView.projectView(data);
   }else {
-    addProject.addProject.createProjectTab();
+    addProjectToDOM.addProjectToDOM.createProjectTab();
   }
 
 

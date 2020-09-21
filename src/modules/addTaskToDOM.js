@@ -1,4 +1,4 @@
-import addTask from "./addTask.js";
+import createTask from "./createTask.js";
 import projectView from "./projectView.js";
 import removeTask from "./removeTask.js";
 import {format} from "date-fns";
@@ -113,7 +113,7 @@ const addTaskToDOM = (() => {
         const description = document.getElementById("description").value;
         // Do not allow blank name, date, or description
         if(name && date && description){
-          addTask.addTask.createNew(name, date, priority, description)
+          createTask.createTask(name, date, priority, description)
           const currentTab = document.querySelector(".selected");
           let index = currentTab.getAttribute("data-index");
           projectView.projectView(index);

@@ -1,9 +1,9 @@
+import createProject from "./createProject.js";
 import projects from "./projects.js";
-import projectFactory from "./projectFactory.js";
-import projectView from "./projectView";
+import projectView from "./projectView.js";
 import removeProject from "./removeProject.js";
 
-const addProject = (() => {
+const addProjectToDOM = (() => {
 
   const createProjectTab = () => {
     // Create project tab to DOM
@@ -32,10 +32,9 @@ const addProject = (() => {
     // Insert tab into DOM
     projectTabs.insertBefore(newTab, lastTab);
     // Create project
-    createProject(projectName);
+    createProject.createProject(projectName);
     // View current project on main page
     projectView.projectView(index);
-
     // Add listener to select tab that is clicked and display
     newTab.addEventListener("click", (e) => {
       // Sloppy - when clicking delete button, it would add selected to
@@ -70,13 +69,8 @@ const addProject = (() => {
     btn.addEventListener("click", createProjectTab);
   })();
 
-  // Create project
-  const createProject = (name) => {
-    let project = projectFactory.projectFactory(name);
-    projects.projects.push(project);
-  };
-
-  return {addListener, createProject, createProjectTab}
+  return {addListener, createProjectTab}
+  
 })();
 
-export default {addProject}
+export default {addProjectToDOM}

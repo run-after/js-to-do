@@ -2,12 +2,12 @@ import addProject from "./addProject.js";
 import projects from "./projects.js";
 import projectView from "./projectView.js";
 
-// pretty sure this works as expected
 const removeProject = (index) => {
   
   const selectedProject = document.querySelector(`[data-index="${index}"]`);
-
+  // Remove from DOM
   selectedProject.remove();
+  // Remove from projects list
   projects.projects.splice(index, 1, null); // replace with null so index won't change on projects
   
   // find selected tab

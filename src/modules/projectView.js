@@ -15,7 +15,8 @@ const projectView = (index) => {
 
   // Calls to create task box with existing tasks
   const listTasks = (item) => {
-    addTask.addTask.listExistingTasks(item);
+    const projectID = index;
+    addTask.addTask.listExistingTasks(item, projectID);
   }
   
   if(tasks.length > 0) {

@@ -1,6 +1,7 @@
 import projects from "./projects.js";
 import projectView from "./projectView.js";
-import taskFactory from "./taskFactory.js"
+import taskFactory from "./taskFactory.js";
+import removeTask from "./removeTask.js";
 import {format} from "date-fns";
 
 const addTask = (() => {
@@ -103,12 +104,11 @@ const addTask = (() => {
         date = format(Date.parse(date), "PPPP");
         // Sets priority to level selected
         let priority = document.querySelectorAll("input[name='priority']");
-        console.log(priority)
         for (const level of priority){
           if (level.checked) {
             priority = level.value;
           }
-        }
+        };
         let description = document.getElementById("description").value;
         // Do not allow blank name, date, or description
         if(name && date && description){
@@ -116,7 +116,7 @@ const addTask = (() => {
           const currentTab = document.querySelector(".selected");
           let index = currentTab.getAttribute("data-index");
           projectView.projectView(index);
-        }
+        };
       });
       // ^^ Creates a form, adds to DOM, calls createNew for info entered ^^
 
@@ -125,14 +125,27 @@ const addTask = (() => {
   };
 
   // Create task box on DOM from existing tasks in project
-  const listExistingTasks = (item) => {
-    
+  const listExistingTasks = (item, projectIndex) => {
+  
+    const taskIndex = projects.projects[projectIndex].tasks.length - 1; /////
     const project = document.querySelector(".project");
     const task = document.createElement("div");
+
+    const deleteButton = document.createElement("div");//////////
+    deleteButton.textContent = "X";///////////////////////////
+    deleteButton.classList = "delete";////////////////////////////
+    deleteButton.style.position = "absolute";//////////////////////
+
     task.classList.add("task");
+    // Set task-index for delete button
+    task.setAttribute("data-task-index", taskIndex);///////////
+    // Set project-index to find parent
+    task.setAttribute("data-project-index", projectIndex);/////////////
     const name = document.createElement("div");
     name.classList.add("name");
     name.textContent = item.name;
+
+    task.appendChild(deleteButton);////////////////////////////
     task.appendChild(name);
     const dueDate = document.createElement("div");
     dueDate.classList.add("dueDate");
@@ -141,13 +154,14 @@ const addTask = (() => {
     const priority = document.createElement("div");
     priority.classList.add("priority");
     priority.textContent = `Priority: ${item.priority}`;
+    // Set background color depending on priority
     if(item.priority == 'Low'){
       task.style.background = "rgb(127, 191, 63)";
     }else if(item.priority == "Medium"){
       task.style.background = "rgb(255, 252, 117)";
     }else {
       task.style.background = "rgb(255, 112, 114)";
-    }
+    };
     task.appendChild(priority);
     const description = document.createElement("div");
     description.classList.add("description");
@@ -155,14 +169,20 @@ const addTask = (() => {
     task.appendChild(description);
     
     project.appendChild(task);
-  }
+
+    // Listener for delete button
+    deleteButton.addEventListener("click", () => {
+      removeTask.removeTask(projectIndex, taskIndex);
+    })
+  };
 
   const createNew = (name, dueDate, priority, description) => {
     const currentTab = document.querySelector(".selected");
     let index = currentTab.getAttribute("data-index");
     // Adds a task to the project
     projects.projects[index].tasks.push(taskFactory.taskFactory(name, dueDate, priority, description));
-  }
+  };
+
 
   return {addListener, listExistingTasks}
 

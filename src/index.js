@@ -12,7 +12,10 @@ import initialView from "./modules/initialView.js";
 
 
 /*
-  Add ability to delete tasks
+  Add ability to delete tasks - started. Marked new button with '/////'
+  added removeTask.js - now just need logic
+
+  Make priority already selected on task
 
   Add ability to edit tasks
 

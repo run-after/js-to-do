@@ -1,15 +1,8 @@
 import createProject from "./modules/createProject.js"
 import initialView from "./modules/initialView.js";
 
-
-
-
-
-
 /*
-  Move DOM logic out of addProject and into addProjectToDOM
-
-  Add ability to edit tasks
+  DueDate could be formatted prettier
 
   Style and label the inputs on task
 

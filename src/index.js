@@ -1,11 +1,10 @@
 import createProject from "./modules/createProject.js"
 import initialView from "./modules/initialView.js";
+import projects from "./modules/projects"
+
+
 
 /*
-  DueDate could be formatted prettier
-
-  Style and label the inputs on task
-
   The description could be long. If so, it makes that
   task box large and shrings the others. Maybe hide the 
   description unless clicked on, then expand it with a 
@@ -13,7 +12,9 @@ import initialView from "./modules/initialView.js";
 
   Add local storage
 
+  DueDate could be formatted prettier
 
+  Style and label the inputs on task
 
 
 */

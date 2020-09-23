@@ -1,4 +1,5 @@
 import projects from "./projects.js";
+import storeLocally from "./localStorage.js";
 
 const removeTask = (projectIndex, taskIndex) => {
   
@@ -9,6 +10,8 @@ const removeTask = (projectIndex, taskIndex) => {
   // Remove from project.tasks array
   selectedProject.tasks.splice(taskIndex, 1, null); // replace with null so index won't change on tasks
 
+  storeLocally.store();
 };
 
 export default {removeTask}
+

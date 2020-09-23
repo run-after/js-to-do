@@ -1,6 +1,7 @@
 import addProjectToDOM from "./addProjectToDOM.js";
 import projects from "./projects.js";
 import projectView from "./projectView.js";
+import localStorage from "./localStorage.js";
 
 const removeProject = (index) => {
   
@@ -30,8 +31,9 @@ const removeProject = (index) => {
     addProjectToDOM.addProjectToDOM.createProjectTab();
   }
 
-
-
+  localStorage.store();
 };
 
 export default {removeProject}
+
+// Uncaught TypeError: e is null when I removeTask and reload from JSON

@@ -13,5 +13,4 @@ import initialView from "./modules/initialView.js";
 
   Style and label the inputs on task so getting rid of underlines is obvious
 
-  createnewproject if you hit cancel, it should cancel
 */

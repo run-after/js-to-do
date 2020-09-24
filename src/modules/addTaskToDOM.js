@@ -120,10 +120,19 @@ const addTaskToDOM = (() => {
           let index = currentTab.getAttribute("data-index");
           projectView.projectView(index);
         }else {
-          alert("Must fill out all fields!");
+          // Highlight field that needs to be filled out
+          if(!name){
+            const test = document.getElementById("name");
+            test.style.background = "red"
+            console.log(test)
+          };
+          if(!description){
+            const desc = document.getElementById("description");;
+            desc.style.background = "red";
+          };
         };
       });
-      // ^^ Creates a form, adds to DOM, calls createNew for info entered ^^
+
     });
 
   };

@@ -5,18 +5,21 @@ import projectFactory from "./projectFactory.js"
 
 // Hopefull can get this sorted into a few functions
 const initialView = (() => {
-
   if(projects.projects.length > 0){
     // create tabs and display tasks
     projects.projects.forEach((item, index) => {
       if(item){// If item wasn't deleted
+      
         const lastTab = document.querySelector(".last-tab");
         const projectTabs = document.querySelector(".project-tabs");
         // Create new project tab
         const newTab = document.createElement("div");
         newTab.classList.add("tab");
+        
+        
         // And make the new tab .selected
-        if(index == 0){newTab.classList.add("selected")};
+        //if(index == 0){newTab.classList.add("selected")};
+        
         newTab.setAttribute("data-index", index);
         newTab.textContent = item.title;
         const deleteBtn = document.createElement("button");
@@ -47,10 +50,19 @@ const initialView = (() => {
         deleteBtn.addEventListener("click", (e) => {
           let index = e.target.parentElement.getAttribute("data-index");
           removeProject.removeProject(index);
+          
         });
       };
     });
-    projectView.projectView(0);
+                  
+    // find first tab
+    const parent = document.querySelector(".project-tabs");//
+    const firstTab = parent.firstElementChild;//
+    const firstTabIndex = firstTab.getAttribute("data-index");
+    // add selected class to firstTab
+    firstTab.classList.add("selected");
+
+    projectView.projectView(firstTabIndex);
   }else {
   
     const createProject = (name) => {

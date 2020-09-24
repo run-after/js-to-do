@@ -12,15 +12,13 @@ const addProjectToDOM = (() => {
     const newTab = document.createElement("div");
     newTab.classList.add("tab");
 
-    // Remove all other .selected tabs when generated
-    const selectedElement = document.querySelector(".selected");
-    selectedElement.classList.remove("selected");
-    // And make the new tab .selected
-    newTab.classList.add("selected");
+    changeToSelectedTab(newTab);
     
     // set data-index
     const index = projects.projects.length;
     newTab.setAttribute("data-index", index);
+
+    // Name project
     const projectName = prompt("New project name?");
     newTab.textContent = projectName;
     
@@ -35,39 +33,38 @@ const addProjectToDOM = (() => {
     createProject.createProject(projectName);
     // View current project on main page
     projectView.projectView(index);
+
     // Add listener to select tab that is clicked and display
     newTab.addEventListener("click", (e) => {
-      // Sloppy - when clicking delete button, it would add selected to
-      // the delete button without if statement
-      // Maybe a click button on delete button will fix this
+      // Only select project tabs
       if(e.target.classList.contains("tab")){
-      
         let index = e.target.dataset.index;
-        
-        // Remove .selected tab
-        const selectedElement = document.querySelector(".selected");
-        selectedElement.classList.remove("selected");
-        // And make the new tab .selected
-        e.target.classList.add("selected");
-
+        changeToSelectedTab(e.target);
         // Display project in main screen
         projectView.projectView(index);
-      
       };
     });
+
     // Add listener to delete project when delete button is pressed
     deleteBtn.addEventListener("click", (e) => {
-      let index = e.target.parentElement.getAttribute("data-index");
+      const index = e.target.parentElement.getAttribute("data-index");
       removeProject.removeProject(index);
     });
   };
 
-  //add listener to add-project-btn and call right away
+  //add listener to add-project-btn
   const addListener = (() => {
     const btn = document.querySelector(".add-project-btn");
-    // Add a project listener
     btn.addEventListener("click", createProjectTab);
   })();
+
+  const changeToSelectedTab = (tab) => {
+    // Find and remove .selected from currently selected tab
+    const selectedElement = document.querySelector(".selected");
+    selectedElement.classList.remove("selected");
+    // Make selected
+    tab.classList.add("selected");
+  };
 
   return {addListener, createProjectTab}
   

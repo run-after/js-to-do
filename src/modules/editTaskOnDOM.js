@@ -37,6 +37,10 @@ const editTaskOnDOM = (taskIndex, projectIndex) => {
   nameInput.id = "name";
   nameInput.value = name;
 
+  const dateLabel = document.createElement("span");
+  dateLabel.textContent = "Due date: ";
+  dateLabel.classList.add("date-label");
+
   const dateInput = document.createElement("input");
   dateInput.type = "date";
   dateInput.name = "dueDate";
@@ -82,8 +86,9 @@ const editTaskOnDOM = (taskIndex, projectIndex) => {
   highPriorityLabel.setAttribute("for", "priority");
   highPriorityLabel.textContent = "High";
 
-  const descInput = document.createElement("input");
-  descInput.type = "text";
+  const descInput = document.createElement("textarea");
+  descInput.rows="4";
+  descInput.cols="30";
   descInput.name = "description";
   descInput.id = "description";
   descInput.value = description;
@@ -95,6 +100,7 @@ const editTaskOnDOM = (taskIndex, projectIndex) => {
 
   newTask.appendChild(form);
   form.appendChild(nameInput);
+  form.appendChild(dateLabel);
   form.appendChild(dateInput);
   radioContainer.appendChild(lowPriorityLabel);
   radioContainer.appendChild(lowPriorityInput);

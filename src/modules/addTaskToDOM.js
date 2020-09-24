@@ -1,7 +1,6 @@
 import createTask from "./createTask.js";
 import projectView from "./projectView.js";
 import removeTask from "./removeTask.js";
-import {format} from "date-fns";
 import projects from "./projects.js";
 import editTaskOnDOM from "./editTaskOnDOM.js";
 
@@ -32,6 +31,10 @@ const addTaskToDOM = (() => {
       nameInput.name = "name";
       nameInput.id = "name";
       nameInput.placeholder = "Name";
+
+      const dateLabel = document.createElement("span");
+      dateLabel.textContent = "Due date: ";
+      dateLabel.classList.add("date-label");
 
       const dateInput = document.createElement("input");
       dateInput.type = "date";
@@ -76,8 +79,9 @@ const addTaskToDOM = (() => {
       highPriorityLabel.setAttribute("for", "priority");
       highPriorityLabel.textContent = "High";
 
-      const descInput = document.createElement("input");
-      descInput.type = "text";
+      const descInput = document.createElement("textarea");
+      descInput.rows="4";
+      descInput.cols="30";
       descInput.name = "description";
       descInput.id = "description";
       descInput.placeholder = "description";
@@ -89,6 +93,7 @@ const addTaskToDOM = (() => {
 
       newTask.appendChild(form);
       form.appendChild(nameInput);
+      form.appendChild(dateLabel);
       form.appendChild(dateInput);
       radioContainer.appendChild(lowPriorityLabel);
       radioContainer.appendChild(lowPriorityInput);
@@ -122,9 +127,8 @@ const addTaskToDOM = (() => {
         }else {
           // Highlight field that needs to be filled out
           if(!name){
-            const test = document.getElementById("name");
-            test.style.background = "red"
-            console.log(test)
+            const name = document.getElementById("name");
+            name.style.background = "red";
           };
           if(!description){
             const desc = document.getElementById("description");;
@@ -145,9 +149,9 @@ const addTaskToDOM = (() => {
       const project = document.querySelector(".project");
       const task = document.createElement("div");
 
-      const editButton = document.createElement("div");/////
-      editButton.textContent = '\u270E';//////
-      editButton.classList.add("edit");///////
+      const editButton = document.createElement("div");
+      editButton.textContent = '\u270E';
+      editButton.classList.add("edit");
 
       const deleteButton = document.createElement("div");
       deleteButton.textContent = "X";
@@ -162,7 +166,7 @@ const addTaskToDOM = (() => {
       name.classList.add("name");
       name.textContent = item.name;
 
-      task.appendChild(editButton);////////
+      task.appendChild(editButton);
       task.appendChild(deleteButton);
       task.appendChild(name);
       const dueDate = document.createElement("div");

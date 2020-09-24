@@ -28,12 +28,13 @@ const addProjectToDOM = (() => {
     deleteBtn.textContent = "X";
     newTab.appendChild(deleteBtn);
     // Insert tab into DOM
+    
     projectTabs.insertBefore(newTab, lastTab);
     // Create project
     createProject.createProject(projectName);
     // View current project on main page
     projectView.projectView(index);
-
+    
     // Add listener to select tab that is clicked and display
     newTab.addEventListener("click", (e) => {
       // Only select project tabs
@@ -44,6 +45,9 @@ const addProjectToDOM = (() => {
         projectView.projectView(index);
       };
     });
+    
+    // If cancel button was pressed when creating project... Remove project
+    if(!projectName){removeProject.removeProject(index)}
 
     // Add listener to delete project when delete button is pressed
     deleteBtn.addEventListener("click", (e) => {
@@ -51,13 +55,13 @@ const addProjectToDOM = (() => {
       removeProject.removeProject(index);
     });
   };
-
+  
   //add listener to add-project-btn
   const addListener = (() => {
     const btn = document.querySelector(".add-project-btn");
     btn.addEventListener("click", createProjectTab);
   })();
-
+  
   const changeToSelectedTab = (tab) => {
     // Find and remove .selected from currently selected tab
     const selectedElement = document.querySelector(".selected");

@@ -29,7 +29,6 @@ body {
   background: white;
 }
 
-
 .project-tabs {
   margin-top: 50px;
   height: 50px;
@@ -51,10 +50,15 @@ body {
   display: grid;
   align-content: center;
   grid-auto-flow: column;
+  overflow: hidden;
 }
  
 .tab:hover {
   opacity: 0.7;
+}
+
+.last-tab:hover {
+  opacity: 0.5;
 }
 
 .tab input {
@@ -103,22 +107,36 @@ body {
   opacity: 0.8;
 }
 
+.container {
+  display: grid;
+  justify-content: center;
+}
+
 .project {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
   margin: 0 auto 0 auto;
-  width: 75%;
+  width: 100%;
 }
 
 .task {
   margin-top: 10px;
-  height: 300px;/*probably change*/
+  height: 300px;
   width: 300px;
   border-radius: 10px;
   background: lightslategray;
   display: grid;
   grid-auto-flow: row;
+  grid-template-rows: 50px 1fr 1fr 4fr;
+  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+.task form {
+  grid-row: 1 / -1;
+  display: grid;
+  grid-template-rows: 30px 20px 30px 50px 1fr;
+  padding: 10px;
 }
 
 .task .delete {
@@ -126,7 +144,8 @@ body {
   margin: 10px 10px 0 0;
 }
 
-.edit {
+.task .edit {
+  position: absolute;
   width: 20px;
   height: 20px;
   background: grey;
@@ -144,29 +163,39 @@ body {
   opacity: 0.8;
 }
 
+.last-task{
+  grid-template-rows: 1fr;
+}
+
 .task > * {
-  border-bottom: 1px solid black;
-  display: grid;
-  justify-content: center;
-  align-items: center;
-}
-
-.task > *:last-child {
-  border-bottom: none;
-}
-
-
-.priority {
-  text-align: center;
-}
-
-.priority label {
-  padding-left: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .task .name {
   font-weight: bold;
-  font-size: 1.8em;
+  font-size: 3em;
+  overflow: hidden;
+  width: 75%;
+  margin-left: 20px;
+}
+
+.task .dueDate {
+  align-self: center;
+  margin-left: 20px;
+}
+
+.task .priority {
+  align-self: center;
+  margin-left: 20px;
+}
+
+.task .description {
+  align-self: center;
+  overflow: hidden;
+  overflow-wrap: break-word;
+  width: 250px;
+  height: 120px;
+  margin-left: 20px;
 }
 
 .add-task-btn {
@@ -186,4 +215,29 @@ body {
 
 .add-task-btn:hover {
   opacity: 0.8;
+}
+
+@media (max-width: 1455px) {
+  .project {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1275px) {
+  .project {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 955px) {
+  .project{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 630px) {
+  .project{
+    justify-self: center;
+    grid-template-columns: 1fr;
+  }
 }

@@ -207,8 +207,6 @@ const addTaskToDOM = (() => {
     };
   };
 
-  
-
   return {addListener, listExistingTasks}
   
 })();

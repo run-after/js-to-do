@@ -6,7 +6,7 @@ import removeProject from "./removeProject.js";
 const addProjectToDOM = (() => {
 
   const createProjectTab = () => {
-    // Create project tab to DOM
+
     const lastTab = document.querySelector(".last-tab");
     const projectTabs = document.querySelector(".project-tabs");
     const newTab = document.createElement("div");

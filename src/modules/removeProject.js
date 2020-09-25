@@ -35,5 +35,3 @@ const removeProject = (index) => {
 };
 
 export default {removeProject}
-
-// Uncaught TypeError: e is null when I removeTask and reload from JSON

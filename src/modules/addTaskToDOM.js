@@ -12,8 +12,6 @@ const addTaskToDOM = (() => {
     const btn = document.querySelector(".add-task-btn");
     const lastTask = document.querySelector(".last-task");
     // Creates a form, adds to DOM, calls createNew for info entered
-    // Might move this to a module and let it appear when clicked
-    // Adding all this is kinda crazy
     btn.addEventListener("click", () => {
 
       const project = document.querySelector(".project");
@@ -109,7 +107,7 @@ const addTaskToDOM = (() => {
       submit.addEventListener("click", () => {
         const name = document.getElementById("name").value;
         let date = document.getElementById("dueDate").value;
-        //date = format(Date.parse(date), "P");
+        
         // Sets priority to level selected
         let priority = document.querySelectorAll("input[name='priority']");
         for (const level of priority){

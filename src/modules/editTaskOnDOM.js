@@ -116,7 +116,7 @@ const editTaskOnDOM = (taskIndex, projectIndex) => {
   submit.addEventListener("click", () => {
     const name = document.getElementById("name").value;
     let date = document.getElementById("dueDate").value;
-    //date = format(Date.parse(date), "PPPP");
+ 
     // Sets priority to level selected
     let priority = document.querySelectorAll("input[name='priority']");
     for (const level of priority){
@@ -127,14 +127,21 @@ const editTaskOnDOM = (taskIndex, projectIndex) => {
     const description = document.getElementById("description").value;
     // Do not allow blank name, date, or description
 
-    /// THIS IS EDITING THE OBJECT!!!!!!!!!!!!
     if(name && date && description){
       editTask.editTask(name, date, priority, description, projectIndex, taskIndex);
       const currentTab = document.querySelector(".selected");
       let index = currentTab.getAttribute("data-index");
       projectView.projectView(index);
     }else {
-      alert("Must fill out all fields!");
+      // Highlight field that needs to be filled out
+      if(!name){
+        const name = document.getElementById("name");
+        name.style.background = "red";
+      };
+      if(!description){
+        const desc = document.getElementById("description");;
+        desc.style.background = "red";
+      };
     };
   });
 

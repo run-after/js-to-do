@@ -1,4 +1,10 @@
-/* https://autoprefixer.github.io/ */
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -10,17 +16,20 @@ h1 {
 header {
   height: 50px;
   width: 100%;
+  display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
   position: fixed;
   top: 0;
   background: lightslategray;
-  align-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   z-index: 100;
 }
 
 .title {
-  justify-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
 }
 
 /* Main content */
@@ -35,9 +44,12 @@ body {
   height: 50px;
   width: 100%;
   background: lightblue;
+  display: -ms-grid;
   display: grid;
   grid-auto-flow: column;
-  align-items: end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: end;
 }
 
 .tab {
@@ -48,8 +60,10 @@ body {
   border-left: none;
   background: white;
   opacity: 0.5;
+  display: -ms-grid;
   display: grid;
-  align-content: center;
+  -ms-flex-line-pack: center;
+      align-content: center;
   grid-auto-flow: column;
   overflow: hidden;
 }
@@ -73,12 +87,18 @@ body {
   background: grey;
   opacity: 0.3;
   border-radius: 100%;
-  justify-self: end;
+  -ms-grid-column-align: end;
+      justify-self: end;
   margin-right: 10px;
   margin-top: 10px;
+  display: -ms-grid;
   display: grid;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .delete:hover {
@@ -100,10 +120,16 @@ body {
   background: grey;
   opacity: 0.5;
   border-radius: 25%;
-  justify-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  display: -ms-grid;
   display: grid;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .add-project-btn:hover {
@@ -111,12 +137,17 @@ body {
 }
 
 .container {
+  display: -ms-grid;
   display: grid;
-  justify-content: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 .project {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 20px 1fr 20px 1fr 20px 1fr;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 20px;
   margin: 0 auto 0 auto;
@@ -129,15 +160,20 @@ body {
   width: 300px;
   border-radius: 10px;
   background: lightslategray;
+  display: -ms-grid;
   display: grid;
   grid-auto-flow: row;
+  -ms-grid-rows: 50px 1fr 1fr 4fr;
   grid-template-rows: 50px 1fr 1fr 4fr;
-  box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
+          box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .task form {
   grid-row: 1 / -1;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: 30px 20px 30px 50px 1fr;
   grid-template-rows: 30px 20px 30px 50px 1fr;
   padding: 10px;
 }
@@ -154,12 +190,18 @@ body {
   background: grey;
   opacity: 0.3;
   border-radius: 100%;
-  justify-self: end;
+  -ms-grid-column-align: end;
+      justify-self: end;
   margin-top: 10px;
   margin-right: 40px;
+  display: -ms-grid;
   display: grid;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .edit:hover {
@@ -167,6 +209,7 @@ body {
 }
 
 .last-task{
+  -ms-grid-rows: 1fr;
   grid-template-rows: 1fr;
 }
 
@@ -183,17 +226,23 @@ body {
 }
 
 .task .dueDate {
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   margin-left: 20px;
 }
 
 .task .priority {
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   margin-left: 20px;
 }
 
 .task .description {
-  align-self: center;
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
   overflow: hidden;
   overflow-wrap: break-word;
   width: 250px;
@@ -202,16 +251,23 @@ body {
 }
 
 .add-task-btn {
-  align-self: center;
+  -ms-grid-row-align: center;
+      align-self: center;
   width: 100px;
   height: 75px;
   background: grey;
   opacity: 0.5;
   border-radius: 25%;
-  justify-self: center;
+  -ms-grid-column-align: center;
+      justify-self: center;
+  display: -ms-grid;
   display: grid;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: none;
   font-size: 3em;
 }
@@ -228,12 +284,14 @@ body {
 
 @media (max-width: 1275px) {
   .project {
+    -ms-grid-columns: 1fr 20px 1fr 20px 1fr;
     grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media (max-width: 955px) {
   .project{
+    -ms-grid-columns: 1fr 20px 1fr;
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -244,7 +302,9 @@ body {
   }
 
   .project{
-    justify-self: center;
+    -ms-grid-column-align: center;
+        justify-self: center;
+    -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
   }
 }

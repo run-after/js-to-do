@@ -29,7 +29,7 @@ header {
 
 .title {
   -ms-grid-column-align: center;
-  justify-self: end;
+  justify-self: center;
 }
 
 /* Main content */
@@ -275,6 +275,15 @@ body {
   opacity: 0.8;
 }
 
+.modal {
+  height: 75%;
+  width: 50%;
+  background: rgba(0, 0, 0, 0.75);
+  position: absolute;
+  justify-self: center;
+  color: white;
+}
+
 @media (max-width: 1455px) {
   .project {
     width: 100%;
@@ -292,6 +301,10 @@ body {
   .project {
     -ms-grid-columns: 1fr 20px 1fr;
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .modal {
+    width: 75%;
   }
 }
 
